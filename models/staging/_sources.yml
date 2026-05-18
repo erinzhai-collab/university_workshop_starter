@@ -1,0 +1,64 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    database: dbt-learn-496220
+    schema: analytics_us_raw
+
+    tables:
+      - name: raw_customers
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+
+      - name: raw_items
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+
+          - name: order_id
+            tests:
+              - not_null
+
+          - name: sku
+            tests:
+              - not_null
+
+      - name: raw_orders
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+
+          - name: customer
+            tests:
+              - not_null
+
+          - name: store_id
+            tests:
+              - not_null
+
+      - name: raw_products
+        columns:
+          - name: sku
+            tests:
+              - unique
+              - not_null
+
+      - name: raw_stores
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+
+      - name: raw_supplies
+        columns:
+          - name: sku
+            tests:
+              - not_null
